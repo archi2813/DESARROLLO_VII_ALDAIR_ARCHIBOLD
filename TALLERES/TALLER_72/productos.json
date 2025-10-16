@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Aceite 1L",
+        "price": 7.5
+    },
+    {
+        "id": 2,
+        "name": "Filtro de aire",
+        "price": 12
+    },
+    {
+        "id": 3,
+        "name": "Bujías (4)",
+        "price": 18.99
+    },
+    {
+        "id": 4,
+        "name": "Pastillas de freno",
+        "price": 34.5
+    },
+    {
+        "id": 5,
+        "name": "Bombilla H4",
+        "price": 5.2
+    },
+    {
+        "id": 6,
+        "name": "Anticongelante 2L",
+        "price": 9.75
+    }
+]
