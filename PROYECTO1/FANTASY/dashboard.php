@@ -18,29 +18,30 @@ $saldo = $stmt->fetchColumn();
 
 // Obtener jugadores disponibles
 $jugadores = $pdo->query("SELECT * FROM jugadores ORDER BY posicion")->fetchAll(PDO::FETCH_ASSOC);
+
+$page_title = 'Fantasy Fútbol - Mercado';
+include 'layout_head.php';
+include 'navbar_user.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Fantasy Fútbol</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="container py-4">
 
-<h1>Fantasy Fútbol</h1>
-<p><strong>Saldo:</strong> €<?= number_format($saldo, 2) ?></p>
-
-<h2>Mercado de fichajes</h2>
-<table class="table table-striped">
+<main class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="page-title"><i class="bi bi-shop"></i> Mercado de fichajes</h1>
+    <div>
+      <span class="badge text-bg-success">Saldo: €<?= number_format($saldo, 2) ?></span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
 <thead>
 <tr>
     <th>Jugador</th>
     <th>Posición</th>
     <th>Equipo</th>
     <th>Precio</th>
-    <th>Puntos</th>
+    <th class="d-none">Puntos</th>
     <th>Acción</th>
 </tr>
 </thead>
@@ -51,15 +52,20 @@ $jugadores = $pdo->query("SELECT * FROM jugadores ORDER BY posicion")->fetchAll(
     <td><?= $j['posicion'] ?></td>
     <td><?= $j['equipo'] ?></td>
     <td>€<?= number_format($j['precio'], 2) ?></td>
-    <td><?= $j['puntos'] ?></td>
+    <td class="d-none"><?= $j['puntos'] ?></td>
     <td>
         <button class="btn btn-success btn-sm comprar" data-id="<?= $j['id'] ?>" data-precio="<?= $j['precio'] ?>">Comprar</button>
     </td>
 </tr>
 <?php endforeach; ?>
 </tbody>
-</table>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).on("click", ".comprar", function(){
     let jugadorId = $(this).data("id");
@@ -72,5 +78,4 @@ $(document).on("click", ".comprar", function(){
 });
 </script>
 
-</body>
-</html>
+<?php include 'layout_foot.php'; ?>

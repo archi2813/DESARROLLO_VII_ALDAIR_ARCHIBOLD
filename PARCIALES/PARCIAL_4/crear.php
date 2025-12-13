@@ -1,13 +1,13 @@
 <?php
 require_once "config_pdo.php";
-echo "Conexión exitosa a la base de datos con MySQLi.";
+echo "Conexión exitosa a la base de datos con PDO.";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nombre = $_POST['nombre'];
     $categoria = $_POST['categoria'];
     $precio = $_POST['precio'];
     $cantidad = $_POST['cantidad'];
-    $fecha_registro = date('Y-m-d H:i:s');
+    $fecha_registro = date('Y-m-d');
     
     $sql = "INSERT INTO productos (nombre, categoria, precio, cantidad, fecha_registro) VALUES (:nombre, :categoria, :precio, :cantidad, :fecha_registro)";
     

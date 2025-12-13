@@ -16,21 +16,18 @@ ORDER BY total_puntos DESC
 
 $stmt = $pdo->query($sql);
 $ranking = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$page_title = 'Ranking - Fantasy Fútbol';
+include 'layout_head.php';
+include 'navbar_user.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Ranking de Usuarios</title>
-    <style>
-        table { border-collapse: collapse; width: 60%; margin: 20px auto; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-        th { background-color: #f4f4f4; }
-    </style>
-</head>
-<body>
-    <h1 style="text-align:center;">🏆 Ranking de Fantasy Fútbol</h1>
-    <table>
+
+<main class="container">
+  <h1 class="page-title mb-4"><i class="bi bi-bar-chart-line"></i> Ranking de Fantasy Fútbol</h1>
+  
+  <div class="card">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
         <tr>
             <th>Posición</th>
             <th>Usuario</th>
@@ -47,6 +44,10 @@ $ranking = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td><?= $fila['total_puntos'] ?></td>
         </tr>
         <?php endforeach; ?>
-    </table>
-</body>
-</html>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<?php include 'layout_foot.php'; ?>

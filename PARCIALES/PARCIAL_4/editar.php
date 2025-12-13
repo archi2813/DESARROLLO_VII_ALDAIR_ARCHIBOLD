@@ -15,12 +15,6 @@ if($stmt = $pdo->prepare($sql)){
     $stmt->bindParam(":cantidad", $cantidad);
     $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-    // Valores de ejemplo
-    /*$nombre = "Roberto Gomez";
-    $categoria = "avion";
-    $precio = 250.75;
-    $cantidad = 10;
-    $id = 4;*/
     $id = $_POST['id'];
     $nombre = $_POST['nombre'];
     $categoria = $_POST['categoria'];

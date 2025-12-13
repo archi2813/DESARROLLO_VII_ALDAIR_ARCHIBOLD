@@ -9,8 +9,6 @@ try {
     // Iniciamos transacción para que ambas operaciones sean seguras
     $pdo->beginTransaction();
 
-    //$id = 3; // Ejemplo: eliminar usuario con id 3
-
     //Eliminar publicaciones relacionadas
     $sqlPub = "DELETE FROM productos WHERE id = :id";
     $stmtPub = $pdo->prepare($sqlPub);
@@ -31,7 +29,7 @@ try {
     $pdo->rollBack();
 
     if ($e->getCode() == 23000) {
-        echo " No se puede eliminar el usuario porque tiene relaciones activas.";
+        echo " No se puede eliminar el producto porque tiene relaciones activas.";
     } else {
         echo "Error: " . $e->getMessage();
     }
